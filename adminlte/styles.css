@@ -1,0 +1,6 @@
+/* Agrega el estilo activo a los ítems del menú */
+.nav-item.active {
+    background-color: #3498db; /* Color de fondo activo */
+    color: #ffffff; /* Color del texto activo */
+  }
+  

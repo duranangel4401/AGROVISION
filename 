@@ -1,0 +1,751 @@
+[33mcommit 4a0abf8e6e5e3d3e649bea8531bbbd9754d183ef[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Jhimy Fuentes Rojas <fuentesrojasjhimy@gmail.com>
+Date:   Thu Jul 20 10:07:25 2023 -0400
+
+    [200~
+
+[1mdiff --git a/.editorconfig b/.editorconfig[m
+[1mnew file mode 100644[m
+[1mindex 0000000..39f48d9[m
+[1m--- /dev/null[m
+[1m+++ b/.editorconfig[m
+[36m@@ -0,0 +1,15 @@[m
+[32m+[m[32m# top-most EditorConfig file[m
+[32m+[m[32mroot = true[m
+[32m+[m
+[32m+[m[32m# Unix-style newlines with a newline ending every file[m
+[32m+[m[32m[*][m
+[32m+[m[32mend_of_line = lf[m
+[32m+[m[32minsert_final_newline = true[m
+[32m+[m
+[32m+[m[32m# Matches multiple files with brace expansion notation[m
+[32m+[m[32m# Set default charset[m
+[32m+[m[32m[*][m
+[32m+[m[32mcharset = utf-8[m
+[32m+[m
+[32m+[m[32m# Tab indentation (no size specified)[m
+[32m+[m[32mindent_style = tab[m
+[1mdiff --git a/.gitignore b/.gitignore[m
+[1mnew file mode 100644[m
+[1mindex 0000000..323f064[m
+[1m--- /dev/null[m
+[1m+++ b/.gitignore[m
+[36m@@ -0,0 +1,32 @@[m
+[32m+[m[32m.DS_Store[m
+[32m+[m
+[32m+[m[32mapplication/cache/*[m
+[32m+[m[32m!application/cache/index.html[m
+[32m+[m
+[32m+[m[32mapplication/logs/*[m
+[32m+[m[32m!application/logs/index.html[m
+[32m+[m
+[32m+[m[32m!application/*/.htaccess[m
+[32m+[m
+[32m+[m[32mcomposer.lock[m
+[32m+[m[32mtests/mocks/database/ci_test.sqlite[m
+[32m+[m
+[32m+[m[32muser_guide_src/build/*[m
+[32m+[m[32muser_guide_src/cilexer/build/*[m
+[32m+[m[32muser_guide_src/cilexer/dist/*[m
+[32m+[m[32muser_guide_src/cilexer/pycilexer.egg-info/*[m
+[32m+[m[32m/vendor/[m
+[32m+[m
+[32m+[m[32m# IDE Files[m
+[32m+[m[32m#-------------------------[m
+[32m+[m[32m/nbproject/[m
+[32m+[m[32m.idea/*[m
+[32m+[m
+[32m+[m[32m## Sublime Text cache files[m
+[32m+[m[32m*.tmlanguage.cache[m
+[32m+[m[32m*.tmPreferences.cache[m
+[32m+[m[32m*.stTheme.cache[m
+[32m+[m[32m*.sublime-workspace[m
+[32m+[m[32m*.sublime-project[m
+[32m+[m[32m/tests/tests/[m
+[32m+[m[32m/tests/results/[m
+[1mdiff --git a/adminlte/build/css/custom.css b/adminlte/build/css/custom.css[m
+[1mnew file mode 100644[m
+[1mindex 0000000..7c8764f[m
+[1m--- /dev/null[m
+[1m+++ b/adminlte/build/css/custom.css[m
+[36m@@ -0,0 +1,4970 @@[m
+[32m+[m[32m@charset "UTF-8";[m
+[32m+[m[32m@font-face {[m
+[32m+[m[32m  font-family: 'Glyphicons Halflings';[m
+[32m+[m[32m  src: url("https://netdna.bootstrapcdn.com/bootstrap/3.0.0/fonts/glyphicons-halflings-regular.eot");[m
+[32m+[m[32m  src: url("https://netdna.bootstrapcdn.com/bootstrap/3.0.0/fonts/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"), url("https://netdna.bootstrapcdn.com/bootstrap/3.0.0/fonts/glyphicons-halflings-regular.woff") format("woff"), url("https://netdna.bootstrapcdn.com/bootstrap/3.0.0/fonts/glyphicons-halflings-regular.ttf") format("truetype"), url("https://netdna.bootstrapcdn.com/bootstrap/3.0.0/fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular") format("svg"); }[m
+[32m+[m
+[32m+[m[32m.glyphicon {[m
+[32m+[m[32m  position: relative;[m
+[32m+[m[32m  top: 1px;[m
+[32m+[m[32m  display: inline-block;[m
+[32m+[m[32m  font-family: 'Glyphicons Halflings';[m
+[32m+[m[32m  font-style: normal;[m
+[32m+[m[32m  font-weight: normal;[m
+[32m+[m[32m  line-height: 1;[m
+[32m+[m[32m  -webkit-font-smoothing: antialiased; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-asterisk:before {[m
+[32m+[m[32m  content: "\002a"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-plus:before {[m
+[32m+[m[32m  content: "\002b"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-euro:before,[m
+[32m+[m[32m.glyphicon-eur:before {[m
+[32m+[m[32m  content: "\20ac"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-minus:before {[m
+[32m+[m[32m  content: "\2212"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-cloud:before {[m
+[32m+[m[32m  content: "\2601"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-envelope:before {[m
+[32m+[m[32m  content: "\2709"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-pencil:before {[m
+[32m+[m[32m  content: "\270f"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-glass:before {[m
+[32m+[m[32m  content: "\e001"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-music:before {[m
+[32m+[m[32m  content: "\e002"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-search:before {[m
+[32m+[m[32m  content: "\e003"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-heart:before {[m
+[32m+[m[32m  content: "\e005"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-star:before {[m
+[32m+[m[32m  content: "\e006"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-star-empty:before {[m
+[32m+[m[32m  content: "\e007"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-user:before {[m
+[32m+[m[32m  content: "\e008"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-film:before {[m
+[32m+[m[32m  content: "\e009"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-th-large:before {[m
+[32m+[m[32m  content: "\e010"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-th:before {[m
+[32m+[m[32m  content: "\e011"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-th-list:before {[m
+[32m+[m[32m  content: "\e012"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-ok:before {[m
+[32m+[m[32m  content: "\e013"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-remove:before {[m
+[32m+[m[32m  content: "\e014"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-zoom-in:before {[m
+[32m+[m[32m  content: "\e015"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-zoom-out:before {[m
+[32m+[m[32m  content: "\e016"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-off:before {[m
+[32m+[m[32m  content: "\e017"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-signal:before {[m
+[32m+[m[32m  content: "\e018"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-cog:before {[m
+[32m+[m[32m  content: "\e019"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-trash:before {[m
+[32m+[m[32m  content: "\e020"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-home:before {[m
+[32m+[m[32m  content: "\e021"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-file:before {[m
+[32m+[m[32m  content: "\e022"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-time:before {[m
+[32m+[m[32m  content: "\e023"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-road:before {[m
+[32m+[m[32m  content: "\e024"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-download-alt:before {[m
+[32m+[m[32m  content: "\e025"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-download:before {[m
+[32m+[m[32m  content: "\e026"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-upload:before {[m
+[32m+[m[32m  content: "\e027"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-inbox:before {[m
+[32m+[m[32m  content: "\e028"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-play-circle:before {[m
+[32m+[m[32m  content: "\e029"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-repeat:before {[m
+[32m+[m[32m  content: "\e030"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-refresh:before {[m
+[32m+[m[32m  content: "\e031"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-list-alt:before {[m
+[32m+[m[32m  content: "\e032"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-lock:before {[m
+[32m+[m[32m  content: "\e033"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-flag:before {[m
+[32m+[m[32m  content: "\e034"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-headphones:before {[m
+[32m+[m[32m  content: "\e035"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-volume-off:before {[m
+[32m+[m[32m  content: "\e036"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-volume-down:before {[m
+[32m+[m[32m  content: "\e037"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-volume-up:before {[m
+[32m+[m[32m  content: "\e038"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-qrcode:before {[m
+[32m+[m[32m  content: "\e039"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-barcode:before {[m
+[32m+[m[32m  content: "\e040"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-tag:before {[m
+[32m+[m[32m  content: "\e041"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-tags:before {[m
+[32m+[m[32m  content: "\e042"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-book:before {[m
+[32m+[m[32m  content: "\e043"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-bookmark:before {[m
+[32m+[m[32m  content: "\e044"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-print:before {[m
+[32m+[m[32m  content: "\e045"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-camera:before {[m
+[32m+[m[32m  content: "\e046"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-font:before {[m
+[32m+[m[32m  content: "\e047"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-bold:before {[m
+[32m+[m[32m  content: "\e048"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-italic:before {[m
+[32m+[m[32m  content: "\e049"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-text-height:before {[m
+[32m+[m[32m  content: "\e050"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-text-width:before {[m
+[32m+[m[32m  content: "\e051"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-align-left:before {[m
+[32m+[m[32m  content: "\e052"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-align-center:before {[m
+[32m+[m[32m  content: "\e053"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-align-right:before {[m
+[32m+[m[32m  content: "\e054"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-align-justify:before {[m
+[32m+[m[32m  content: "\e055"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-list:before {[m
+[32m+[m[32m  content: "\e056"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-indent-left:before {[m
+[32m+[m[32m  content: "\e057"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-indent-right:before {[m
+[32m+[m[32m  content: "\e058"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-facetime-video:before {[m
+[32m+[m[32m  content: "\e059"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-picture:before {[m
+[32m+[m[32m  content: "\e060"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-map-marker:before {[m
+[32m+[m[32m  content: "\e062"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-adjust:before {[m
+[32m+[m[32m  content: "\e063"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-tint:before {[m
+[32m+[m[32m  content: "\e064"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-edit:before {[m
+[32m+[m[32m  content: "\e065"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-share:before {[m
+[32m+[m[32m  content: "\e066"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-check:before {[m
+[32m+[m[32m  content: "\e067"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-move:before {[m
+[32m+[m[32m  content: "\e068"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-step-backward:before {[m
+[32m+[m[32m  content: "\e069"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-fast-backward:before {[m
+[32m+[m[32m  content: "\e070"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-backward:before {[m
+[32m+[m[32m  content: "\e071"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-play:before {[m
+[32m+[m[32m  content: "\e072"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-pause:before {[m
+[32m+[m[32m  content: "\e073"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-stop:before {[m
+[32m+[m[32m  content: "\e074"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-forward:before {[m
+[32m+[m[32m  content: "\e075"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-fast-forward:before {[m
+[32m+[m[32m  content: "\e076"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-step-forward:before {[m
+[32m+[m[32m  content: "\e077"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-eject:before {[m
+[32m+[m[32m  content: "\e078"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-chevron-left:before {[m
+[32m+[m[32m  content: "\e079"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-chevron-right:before {[m
+[32m+[m[32m  content: "\e080"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-plus-sign:before {[m
+[32m+[m[32m  content: "\e081"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-minus-sign:before {[m
+[32m+[m[32m  content: "\e082"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-remove-sign:before {[m
+[32m+[m[32m  content: "\e083"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-ok-sign:before {[m
+[32m+[m[32m  content: "\e084"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-question-sign:before {[m
+[32m+[m[32m  content: "\e085"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-info-sign:before {[m
+[32m+[m[32m  content: "\e086"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-screenshot:before {[m
+[32m+[m[32m  content: "\e087"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-remove-circle:before {[m
+[32m+[m[32m  content: "\e088"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-ok-circle:before {[m
+[32m+[m[32m  content: "\e089"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-ban-circle:before {[m
+[32m+[m[32m  content: "\e090"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-arrow-left:before {[m
+[32m+[m[32m  content: "\e091"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-arrow-right:before {[m
+[32m+[m[32m  content: "\e092"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-arrow-up:before {[m
+[32m+[m[32m  content: "\e093"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-arrow-down:before {[m
+[32m+[m[32m  content: "\e094"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-share-alt:before {[m
+[32m+[m[32m  content: "\e095"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-resize-full:before {[m
+[32m+[m[32m  content: "\e096"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-resize-small:before {[m
+[32m+[m[32m  content: "\e097"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-exclamation-sign:before {[m
+[32m+[m[32m  content: "\e101"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-gift:before {[m
+[32m+[m[32m  content: "\e102"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-leaf:before {[m
+[32m+[m[32m  content: "\e103"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-fire:before {[m
+[32m+[m[32m  content: "\e104"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-eye-open:before {[m
+[32m+[m[32m  content: "\e105"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-eye-close:before {[m
+[32m+[m[32m  content: "\e106"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-warning-sign:before {[m
+[32m+[m[32m  content: "\e107"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-plane:before {[m
+[32m+[m[32m  content: "\e108"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-calendar:before {[m
+[32m+[m[32m  content: "\e109"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-random:before {[m
+[32m+[m[32m  content: "\e110"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-comment:before {[m
+[32m+[m[32m  content: "\e111"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-magnet:before {[m
+[32m+[m[32m  content: "\e112"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-chevron-up:before {[m
+[32m+[m[32m  content: "\e113"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-chevron-down:before {[m
+[32m+[m[32m  content: "\e114"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-retweet:before {[m
+[32m+[m[32m  content: "\e115"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-shopping-cart:before {[m
+[32m+[m[32m  content: "\e116"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-folder-close:before {[m
+[32m+[m[32m  content: "\e117"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-folder-open:before {[m
+[32m+[m[32m  content: "\e118"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-resize-vertical:before {[m
+[32m+[m[32m  content: "\e119"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-resize-horizontal:before {[m
+[32m+[m[32m  content: "\e120"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-hdd:before {[m
+[32m+[m[32m  content: "\e121"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-bullhorn:before {[m
+[32m+[m[32m  content: "\e122"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-bell:before {[m
+[32m+[m[32m  content: "\e123"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-certificate:before {[m
+[32m+[m[32m  content: "\e124"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-thumbs-up:before {[m
+[32m+[m[32m  content: "\e125"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-thumbs-down:before {[m
+[32m+[m[32m  content: "\e126"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-hand-right:before {[m
+[32m+[m[32m  content: "\e127"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-hand-left:before {[m
+[32m+[m[32m  content: "\e128"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-hand-up:before {[m
+[32m+[m[32m  content: "\e129"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-hand-down:before {[m
+[32m+[m[32m  content: "\e130"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-circle-arrow-right:before {[m
+[32m+[m[32m  content: "\e131"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-circle-arrow-left:before {[m
+[32m+[m[32m  content: "\e132"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-circle-arrow-up:before {[m
+[32m+[m[32m  content: "\e133"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-circle-arrow-down:before {[m
+[32m+[m[32m  content: "\e134"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-globe:before {[m
+[32m+[m[32m  content: "\e135"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-wrench:before {[m
+[32m+[m[32m  content: "\e136"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-tasks:before {[m
+[32m+[m[32m  content: "\e137"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-filter:before {[m
+[32m+[m[32m  content: "\e138"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-briefcase:before {[m
+[32m+[m[32m  content: "\e139"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-fullscreen:before {[m
+[32m+[m[32m  content: "\e140"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-dashboard:before {[m
+[32m+[m[32m  content: "\e141"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-paperclip:before {[m
+[32m+[m[32m  content: "\e142"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-heart-empty:before {[m
+[32m+[m[32m  content: "\e143"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-link:before {[m
+[32m+[m[32m  content: "\e144"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-phone:before {[m
+[32m+[m[32m  content: "\e145"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-pushpin:before {[m
+[32m+[m[32m  content: "\e146"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-usd:before {[m
+[32m+[m[32m  content: "\e148"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-gbp:before {[m
+[32m+[m[32m  content: "\e149"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-sort:before {[m
+[32m+[m[32m  content: "\e150"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-sort-by-alphabet:before {[m
+[32m+[m[32m  content: "\e151"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-sort-by-alphabet-alt:before {[m
+[32m+[m[32m  content: "\e152"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-sort-by-order:before {[m
+[32m+[m[32m  content: "\e153"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-sort-by-order-alt:before {[m
+[32m+[m[32m  content: "\e154"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-sort-by-attributes:before {[m
+[32m+[m[32m  content: "\e155"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-sort-by-attributes-alt:before {[m
+[32m+[m[32m  content: "\e156"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-unchecked:before {[m
+[32m+[m[32m  content: "\e157"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-expand:before {[m
+[32m+[m[32m  content: "\e158"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-collapse-down:before {[m
+[32m+[m[32m  content: "\e159"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-collapse-up:before {[m
+[32m+[m[32m  content: "\e160"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-log-in:before {[m
+[32m+[m[32m  content: "\e161"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-flash:before {[m
+[32m+[m[32m  content: "\e162"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-log-out:before {[m
+[32m+[m[32m  content: "\e163"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-new-window:before {[m
+[32m+[m[32m  content: "\e164"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-record:before {[m
+[32m+[m[32m  content: "\e165"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-save:before {[m
+[32m+[m[32m  content: "\e166"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-open:before {[m
+[32m+[m[32m  content: "\e167"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-saved:before {[m
+[32m+[m[32m  content: "\e168"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-import:before {[m
+[32m+[m[32m  content: "\e169"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-export:before {[m
+[32m+[m[32m  content: "\e170"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-send:before {[m
+[32m+[m[32m  content: "\e171"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-floppy-disk:before {[m
+[32m+[m[32m  content: "\e172"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-floppy-saved:before {[m
+[32m+[m[32m  content: "\e173"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-floppy-remove:before {[m
+[32m+[m[32m  content: "\e174"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-floppy-save:before {[m
+[32m+[m[32m  content: "\e175"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-floppy-open:before {[m
+[32m+[m[32m  content: "\e176"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-credit-card:before {[m
+[32m+[m[32m  content: "\e177"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-transfer:before {[m
+[32m+[m[32m  content: "\e178"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-cutlery:before {[m
+[32m+[m[32m  content: "\e179"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-header:before {[m
+[32m+[m[32m  content: "\e180"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-compressed:before {[m
+[32m+[m[32m  content: "\e181"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-earphone:before {[m
+[32m+[m[32m  content: "\e182"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-phone-alt:before {[m
+[32m+[m[32m  content: "\e183"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-tower:before {[m
+[32m+[m[32m  content: "\e184"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-stats:before {[m
+[32m+[m[32m  content: "\e185"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-sd-video:before {[m
+[32m+[m[32m  content: "\e186"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-hd-video:before {[m
+[32m+[m[32m  content: "\e187"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-subtitles:before {[m
+[32m+[m[32m  content: "\e188"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-sound-stereo:before {[m
+[32m+[m[32m  content: "\e189"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-sound-dolby:before {[m
+[32m+[m[32m  content: "\e190"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-sound-5-1:before {[m
+[32m+[m[32m  content: "\e191"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-sound-6-1:before {[m
+[32m+[m[32m  content: "\e192"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-sound-7-1:before {[m
+[32m+[m[32m  content: "\e193"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-copyright-mark:before {[m
+[32m+[m[32m  content: "\e194"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-registration-mark:before {[m
+[32m+[m[32m  content: "\e195"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-cloud-download:before {[m
+[32m+[m[32m  content: "\e197"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-cloud-upload:before {[m
+[32m+[m[32m  content: "\e198"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-tree-conifer:before {[m
+[32m+[m[32m  content: "\e199"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-tree-deciduous:before {[m
+[32m+[m[32m  content: "\e200"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-cd:before {[m
+[32m+[m[32m  content: "\e201"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-save-file:before {[m
+[32m+[m[32m  content: "\e202"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-open-file:before {[m
+[32m+[m[32m  content: "\e203"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-level-up:before {[m
+[32m+[m[32m  content: "\e204"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-copy:before {[m
+[32m+[m[32m  content: "\e205"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-paste:before {[m
+[32m+[m[32m  content: "\e206"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-alert:before {[m
+[32m+[m[32m  content: "\e209"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-equalizer:before {[m
+[32m+[m[32m  content: "\e210"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-king:before {[m
+[32m+[m[32m  content: "\e211"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-queen:before {[m
+[32m+[m[32m  content: "\e212"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-pawn:before {[m
+[32m+[m[32m  content: "\e213"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-bishop:before {[m
+[32m+[m[32m  content: "\e214"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-knight:before {[m
+[32m+[m[32m  content: "\e215"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-baby-formula:before {[m
+[32m+[m[32m  content: "\e216"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-tent:before {[m
+[32m+[m[32m  content: "\26fa"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-blackboard:before {[m
+[32m+[m[32m  content: "\e218"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-bed:before {[m
+[32m+[m[32m  content: "\e219"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-apple:before {[m
+[32m+[m[32m  content: "\f8ff"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-erase:before {[m
+[32m+[m[32m  content: "\e221"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-hourglass:before {[m
+[32m+[m[32m  content: "\231b"; }[m
+[32m+[m
+[32m+[m[32m.glyphicon-lamp:before {[m
+[32m+[m[32m  content: "\e223"; }[m
+[
